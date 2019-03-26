@@ -7,3 +7,5 @@
 exports.user = 'root'
 exports.password = 'choicelin'
 exports.database = 'robotech'
+exports.secret = 'sPzsvDp3vGZuUaygGYWw0xsmmfc1ZeHi+dzElhsXXIfjiHSBcGwDBzgzzMdLThQk'
+exports.salt = '1314520'
