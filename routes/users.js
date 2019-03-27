@@ -2,11 +2,6 @@ const express = require('express')
 const router = express.Router()
 const usersManager = require('../manager/usersManager')
 
-/* GET users listing. */
-router.get('/register', (req, res, next) => {
-  res.send('respond with a resource')
-})
-
 router.post('/login', async (req, res, next) => {
   const obj = await usersManager.login(req.body.accountName, req.body.password)
   res.json(obj)

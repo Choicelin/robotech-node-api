@@ -28,5 +28,12 @@ module.exports = {
       totalPage,
       totalCount
     }
+  },
+  async getArticleById (id) {
+    const obj = await Model.findOne({where: {id}, raw: true})
+    return {
+      data: obj,
+      message: '文章查询成功'
+    }
   }
 }

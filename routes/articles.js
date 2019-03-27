@@ -15,5 +15,11 @@ router.get('/list', async (req, res, next) => {
   res.json(data)
 });
 
+router.get('/getArticleById', async (req, res, next) => {
+  const {id} = req.query
+  const data = await articlesManager.getArticleById(id)
+  res.json(data)
+})
+
 module.exports = router;
 

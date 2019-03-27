@@ -4,9 +4,8 @@ const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const jwt = require('express-jwt')
 
-const { secret } = require('./config/config.dev')
+const { secret } = require('./config/config.prod')
 
-const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const articlesRouter = require('./routes/articles')
 const app = express()
@@ -15,7 +14,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use('/robot', express.static(path.join(__dirname, 'public')))
-const whiteList = {path: ['/users/register', '/users/login']}
+const whiteList = {path: ['/api/users/register', '/api/users/login', '/api/articles/list', '/api/articles/getArticleById']}
 app.use(jwt({
   secret,
   getToken: function fromHeaderOrQuerystring (req) {
@@ -28,9 +27,8 @@ app.use(jwt({
   }
 }).unless(whiteList))
 
-app.use('/', indexRouter)
-app.use('/users', usersRouter)
-app.use('/articles', articlesRouter)
+app.use('/api/users', usersRouter)
+app.use('/api/articles', articlesRouter)
 
 app.use(function (req, res, next) {
   res.status(404).send('404 Not Found')

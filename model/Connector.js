@@ -4,7 +4,7 @@
  * Time: 16:07
  */
 const Sequelize = require('sequelize')
-const {user, password, database} = require('../config/config.dev')
+const {user, password, database} = require('../config/config.prod')
 
 const sequelize = new Sequelize(database, user, password, {
   host: 'localhost',
