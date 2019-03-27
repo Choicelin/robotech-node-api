@@ -6,7 +6,9 @@
 
 const jwt = require('jsonwebtoken')
 const crypto = require('crypto')
-const {secret, salt} = require('../config/config.prod')
+const config = require('../config/config.environment')
+let env = config.env === 'dev' ? '../config/config.dev' : '../config/config.prod'
+const {secret, salt} = require(env)
 const Model = require('../model/Users')
 
 function pbkdf2Async (password, salt, iterations, keylen, digest) {

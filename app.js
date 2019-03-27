@@ -3,8 +3,10 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const jwt = require('express-jwt')
+const config = require('./config/config.environment')
+let env = config.env === 'dev' ? './config/config.dev' : './config/config.prod'
 
-const { secret } = require('./config/config.prod')
+const { secret } = require(env)
 
 const usersRouter = require('./routes/users')
 const articlesRouter = require('./routes/articles')
