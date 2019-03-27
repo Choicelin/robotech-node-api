@@ -30,9 +30,11 @@ module.exports = {
     }
   },
   async getArticleById (id) {
-    const obj = await Model.findOne({where: {id}, raw: true})
+    const obj = await Model.findOne({where: {id}})
+    obj.pv = Number(obj.pv) + 1
+    await obj.save()
     return {
-      data: obj,
+      data: obj.get({plain: true}),
       message: '文章查询成功'
     }
   }

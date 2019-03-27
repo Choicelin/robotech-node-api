@@ -4,6 +4,6 @@
  * Time: 20:13
  */
 
-module.export = {
-  env: 'dev'
+module.exports = {
+  env: 'prod'
 }
