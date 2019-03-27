@@ -17,7 +17,7 @@ module.exports = {
       offset,
       limit,
       raw: true,
-      order: 'id DESC'
+      order: [['id', 'DESC']]
     })
     const totalCount = queryObj.count
     const totalPage = Math.ceil(totalCount/ pageSize)
