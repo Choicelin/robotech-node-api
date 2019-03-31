@@ -5,5 +5,5 @@
  */
 
 module.exports = {
-  env: 'prod'
+  env: 'dev'
 }
